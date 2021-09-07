@@ -44,7 +44,7 @@ def register() -> Plugin:
             className='KeyCounterAction',
             inputs=['payload'],
             outputs=['counts'],
-            version="0.1.1",
+            version="0.1.2",
             license="MIT",
             author="Risto Kowaczewski",
             init={

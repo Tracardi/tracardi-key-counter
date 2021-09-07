@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='tracardi-key-counter',
-    version='0.1.1',
+    version='0.1.2',
     description='This plugin counts keys provided in payload.',
     long_description=long_description,
     long_description_content_type="text/markdown",
