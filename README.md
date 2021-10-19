@@ -1,6 +1,7 @@
-# Key counter plugin
+# Key counter
 
-This plugin counts keys provided in payload.
+This plugin counts keys provided in payload. Key string provided in payload will be treated as an information 
+to increase the value of a key in profile. 
 
 # Configuration
 
@@ -10,27 +11,27 @@ This plugin counts keys provided in payload.
 }
 ```
 
-This configuration indicated that profile has some stats at stats.counters.MobileVisits 
-that count keys in form of a dict:
+This configuration point to data in profile that will hold the information on key counts. 
+It should be empty object `{}` or the object in the key-value format
+
+*Example*
 
 ```json
 {
   "key1": 1,
-  "key2": 33,
-  ...
+  "key2": 33
 }
 ```
 
-This is the place where additional counts will be saved.
+This action will place additional counts in the provided path.
 
 # Payload
 
 Payload for this plugin must be either string or list of stings. Each string is a key to be counted.
 
-For example if you count mobile and desktop visits. Get the agent type from context sent in event. 
-And cut out information on platform and send it to this plugin to be counted. One this it will be 'mobile',
-other time it will be 'desktop' depending on the platform the customer is using. 
-
+For example if you would like to count mobile and desktop visits. Get the agent type from context (see: `event.context`) 
+and cut out information about platform. Then send it to this plugin to be counted. If the value equals to 'mobile',
+then the key value in profile will be increased by 1, if the payload value is 'desktop' then desktop key value will increase.
 Example of payload:
 
 ```json
@@ -39,7 +40,7 @@ Example of payload:
 }
 ```
 
-or if multiple key as being sent. 
+There may be multiple keys in the payload. 
 
 ```json
 {

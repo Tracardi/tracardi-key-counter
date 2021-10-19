@@ -1,10 +1,9 @@
 class KeyCounter:
 
-    def __init__(self, counts=None):
-        if isinstance(counts, dict) or counts is None:
-            self.counts = {} if counts is None else counts
-        else:
-            raise ValueError("Keys to count must be either list of strings or string.")
+    def __init__(self, counts: dict):
+        if not isinstance(counts, dict):
+            raise ValueError("Storage path for key counting must be dict.")
+        self.counts = counts
 
     def _increase(self, key):
         if key not in self.counts:
