@@ -61,6 +61,7 @@ def register() -> Plugin:
             version="0.6.0",
             license="MIT",
             author="Risto Kowaczewski",
+            manual="key_counter_action",
             init={
                 "key": None,
                 "save_in": None

@@ -1,18 +1,23 @@
 # Key counter
 
-This plugin counts keys provided in payload. Key string provided in payload will be treated as an information 
-to increase the value of a key in profile. 
+This plugin counts key strings. Key string provided in configuration will be treated as an information 
+to increase the value of a key in profile. For example if the key equals to `['a','b','a']` then the 
+key count equals to `{"a":2, "b":1}`. 
+
+This plugin can be used for simple statistics e.g. count how many user visited us on mobile device vs other devices
+like desktop or tablet.
 
 # Configuration
 
 ```json
 {
-  "path": "profile@stats.counters.MobileVisits"
+  "key": "desktop",
+  "save_in": "profile@stats.counters.MobileVisits"
 }
 ```
 
-This configuration point to data in profile that will hold the information on key counts. 
-It should be empty object `{}` or the object in the key-value format
+* `key` may be a string or a list of strings. Also, a dot notation can be used to access data.
+* `save_in` point to data in profile that will hold the information on key counts. It should be empty object `{}` or a key-value object.
 
 *Example*
 
@@ -23,27 +28,13 @@ It should be empty object `{}` or the object in the key-value format
 }
 ```
 
-This action will place additional counts in the provided path.
+## Examples
 
-# Payload
-
-Payload for this plugin must be either string or list of stings. Each string is a key to be counted.
-
-For example if you would like to count mobile and desktop visits. Get the agent type from context (see: `event.context`) 
-and cut out information about platform. Then send it to this plugin to be counted. If the value equals to 'mobile',
-then the key value in profile will be increased by 1, if the payload value is 'desktop' then desktop key value will increase.
-Example of payload:
+Example of configuration with dot notation in `key` and `save_in`
 
 ```json
 {
-  "payload": "mobile"
-}
-```
-
-There may be multiple keys in the payload. 
-
-```json
-{
-  "payload": ["mobile", "android"]
+  "key": ["event@session.context.browser.agent", "event@session.context.browser.agent.string"],
+  "save_in": "profile@stats.counters.visits_origins"
 }
 ```
