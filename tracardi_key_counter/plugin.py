@@ -1,4 +1,4 @@
-from tracardi_plugin_sdk.domain.register import Plugin, Spec, MetaData
+from tracardi_plugin_sdk.domain.register import Plugin, Spec, MetaData, Form, FormGroup, FormField, FormComponent
 from tracardi_plugin_sdk.action_runner import ActionRunner
 from tracardi_plugin_sdk.domain.result import Result
 from tracardi.domain.profile import Profile
@@ -65,7 +65,26 @@ def register() -> Plugin:
             init={
                 "key": None,
                 "save_in": None
-            }
+            },
+            form=Form(groups=[
+                FormGroup(
+                    fields=[
+                        FormField(
+                            id="key",
+                            name="Key",
+                            description="Type path to KEY or KEY itself. Default source is event. Change it if"
+                                        " the key is elsewhere.",
+                            component=FormComponent(type="dotPath", props={"defaultSourceValue": "event"})
+                        ),
+                        FormField(
+                            id="save_in",
+                            name="Place to save",
+                            description="Type path to profile.",
+                            component=FormComponent(type="forceDotPath", props={"defaultSourceValue": "profile"})
+                        )
+                    ]
+                ),
+            ]),
         ),
         metadata=MetaData(
             name='Key counter',
