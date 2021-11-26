@@ -1,3 +1,5 @@
+import copy
+
 from tracardi_plugin_sdk.domain.register import Plugin, Spec, MetaData, Form, FormGroup, FormField, FormComponent
 from tracardi_plugin_sdk.action_runner import ActionRunner
 from tracardi_plugin_sdk.domain.result import Result
@@ -46,7 +48,7 @@ class KeyCounterAction(ActionRunner):
 
         self.profile.replace(Profile(**dot.profile))
 
-        return Result(port='counts', value=counter.counts)
+        return Result(port='payload', value=payload)
 
 
 def register() -> Plugin:
@@ -57,8 +59,8 @@ def register() -> Plugin:
             module='tracardi_key_counter.plugin',
             className='KeyCounterAction',
             inputs=['payload'],
-            outputs=['counts'],
-            version="0.6.0",
+            outputs=['payload'],
+            version="0.6.0.1",
             license="MIT",
             author="Risto Kowaczewski",
             manual="key_counter_action",

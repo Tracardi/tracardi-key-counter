@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='tracardi-key-counter',
-    version='0.6.0',
+    version='0.6.0.1',
     description='This plugin counts keys provided in payload.',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -14,7 +14,7 @@ setup(
     packages=['tracardi_key_counter'],
     install_requires=[
         'pydantic',
-        'tracardi_plugin_sdk>=0.6.22',
+        'tracardi_plugin_sdk>=0.6.29',
         'tracardi_dot_notation',
         'tracardi'
     ],
