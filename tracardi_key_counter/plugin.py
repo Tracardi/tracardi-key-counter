@@ -1,6 +1,9 @@
 import copy
 
-from tracardi_plugin_sdk.domain.register import Plugin, Spec, MetaData, Form, FormGroup, FormField, FormComponent
+from pydantic import AnyHttpUrl, HttpUrl
+
+from tracardi_plugin_sdk.domain.register import Plugin, Spec, MetaData, Form, FormGroup, FormField, FormComponent, \
+    Documentation, PortDoc
 from tracardi_plugin_sdk.action_runner import ActionRunner
 from tracardi_plugin_sdk.domain.result import Result
 from tracardi.domain.profile import Profile
@@ -94,6 +97,15 @@ def register() -> Plugin:
             type='flowNode',
             width=200,
             height=100,
+            documentation=Documentation(
+                tutorial="http://www.tracardi.com",
+                inputs={
+                    "payload": PortDoc(desc="This port takes any JSON like object.")
+                },
+                outputs={
+                    "payload": PortDoc(desc="This port takes any JSON like object.")
+                }
+            ),
             icon='bar-chart',
             group=['Stats']
         )
