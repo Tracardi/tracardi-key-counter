@@ -98,7 +98,6 @@ def register() -> Plugin:
             width=200,
             height=100,
             documentation=Documentation(
-                tutorial="http://www.tracardi.com",
                 inputs={
                     "payload": PortDoc(desc="This port takes any JSON like object.")
                 },
