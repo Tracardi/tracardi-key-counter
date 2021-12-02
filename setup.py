@@ -14,7 +14,7 @@ setup(
     packages=['tracardi_key_counter'],
     install_requires=[
         'pydantic',
-        'tracardi_plugin_sdk>=0.6.29',
+        'tracardi_plugin_sdk>=0.6.30',
         'tracardi_dot_notation',
         'tracardi'
     ],
